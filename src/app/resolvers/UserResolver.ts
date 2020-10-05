@@ -1,10 +1,10 @@
 import { UserInputError } from "apollo-server-express"
-import { Arg, InputType, Field, Mutation, Resolver, Query } from "type-graphql"
+import { Args, ArgsType, Field, Mutation, Resolver, Query } from "type-graphql"
 
 import User from "../models/User"
 
-@InputType()
-class CreateUserInput {
+@ArgsType()
+class CreateUserArgs {
   @Field()
   firstName: string 
 
@@ -16,17 +16,20 @@ class CreateUserInput {
 
   @Field()
   password: string
+
+  @Field()
+  whatsapp: string
 }
 
 @Resolver()
 class UserResolver {
   @Query(() => [User]!)
-  public async getUsers() {
-    return await User.find()
+  public async users() {
+    return await User.find({ relations: ['services'] })
   }
   
   @Mutation(() => Boolean)
-  public async createUser(@Arg('params') params: CreateUserInput) {
+  public async createUser(@Args() params: CreateUserArgs) {
     let user = await User.findOne({ email: params.email })
 
     if (user)

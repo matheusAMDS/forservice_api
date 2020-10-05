@@ -28,6 +28,10 @@ export class CreateUser1601520884705 implements MigrationInterface {
         {
           name: 'password',
           type: 'varchar'
+        },
+        {
+          name: 'whatsapp',
+          type: 'varchar'
         }
       ]
     }), true)
