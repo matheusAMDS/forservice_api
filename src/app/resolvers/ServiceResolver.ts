@@ -7,7 +7,7 @@ import {
   Float, 
   Mutation, 
   Resolver,
-  Ctx, Query, ID
+  Ctx, Query, ID, InputType, Arg
 } from "type-graphql"
 
 import Category from "../models/Category"
@@ -72,6 +72,14 @@ class ServiceResolver {
       category: loadedCategory,
       user
     }).save()
+
+    return true
+  }
+
+  @Authorized()
+  @Mutation(type => Boolean)
+  public async deleteService(@Arg('userId') userId: string) {
+    await Service.delete({ user: { id: userId }})
 
     return true
   }
