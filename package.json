@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "yarn migration:run && ts-node src/index.ts",
+    "start": "yarn migration:run && tsc && node build/index.js",
     "dev": "ts-node-dev src/index.ts",
     "migration:create": "typeorm migration:create -n",
     "migration:run": "ts-node ./node_modules/typeorm/cli.js migration:run",
