@@ -15,7 +15,7 @@ module.exports = {
   entities: [`${dir}/app/models/**/*.${ext}`],
   migrations: [`${dir}/database/migrations/**/*.${ext}`],
   cli: {
-    entitiesDir: `${dir}/app/models`,
-    migrationsDir: `${dir}/database/migrations`
+    entitiesDir: `src/app/models`,
+    migrationsDir: `src/database/migrations`
   }
 }
