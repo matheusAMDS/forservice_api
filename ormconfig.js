@@ -5,6 +5,7 @@ const ext = nodeEnv === 'production' ? 'js' : 'ts'
 module.exports = {
   type: 'postgres',
   url: process.env.DATABASE_URL,
+  logging: false,
   /* host: process.env.DB_HOST,
   post: Number(process.env.DB_PORT),
   username: process.env.DB_USERNAME,
@@ -14,7 +15,7 @@ module.exports = {
   entities: [`${dir}/app/models/**/*.${ext}`],
   migrations: [`${dir}/database/migrations/**/*.${ext}`],
   cli: {
-    entitiesDir: `${dir}/app/models`,
-    migrationsDir: `${dir}/database/migrations`
+    entitiesDir: `src/app/models`,
+    migrationsDir: `src/database/migrations`
   }
 }
